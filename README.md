@@ -21,7 +21,7 @@ Revolutionizing agriculture support through unprecedented abstraction, user-frie
 - Run the server (default port: http://127.0.0.1:8000)
 ```bash
   uvicorn main:app
-
+```
 ## License
 
 The Project is Opensource. Feel free to use or modify the code.
@@ -32,4 +32,10 @@ The Project is Opensource. Feel free to use or modify the code.
 
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
+
+## Contributers
+
+- [@HonestFreak](https://www.github.com/HonestFreak)
+- [@karthikprasads](https://github.com/karthikprasads)
+- [@rajeev210403](https://github.com/rajeev210403)
 
