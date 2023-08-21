@@ -9,7 +9,7 @@ router = APIRouter()
 
 
 @router.get("/query={query}")
-def create_user(query: str, db: Session = Depends(get_db)):
+def query(query: str, db: Session = Depends(get_db)):
     chat = ChatOpenAI(openai_api_key="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"
                       , model="gpt-3.5-turbo-0613")
     messages = [HumanMessage(content= query)]
