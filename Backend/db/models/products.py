@@ -12,7 +12,7 @@ class Job(Base):
     id = Column(Integer, primary_key=True, index=True)
     product_name = Column(String, nullable=False)
     contact = Column(String, nullable=False)
-    contact_url = Column(String)
+    quantity = Column(Integer, nullable=False)
     location = Column(String, nullable=False)
     description = Column(String, nullable=False)
     date_posted = Column(Date)
