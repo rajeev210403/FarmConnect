@@ -6,7 +6,6 @@ Revolutionizing agriculture support through unprecedented abstraction, user-frie
 
 ## 🌾Deployment and Usage
 ### Deploying the API endpoints (backend)
-- Frontend is developed using Java and Kotlin
 - Backend is developed using FastAPI (python)
 - Go to the backend folder 
 ```bash
@@ -20,6 +19,13 @@ Revolutionizing agriculture support through unprecedented abstraction, user-frie
 ```bash
   uvicorn main:app
 ```
+
+### Deploying the API endpoints (frontend)
+- Frontend is developed on Android studios
+- Change the endpoint URL to your own backend URL.
+- Use 10.0.2.2:8000 to access the localhost.
+- Generate the .apk file from the Android Studios
+
 ## License
 
 The Project is Opensource. Feel free to use or modify the code.
