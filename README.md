@@ -24,7 +24,6 @@ Revolutionizing agriculture support through unprecedented abstraction, user-frie
 - Frontend is developed on Android studios
 - Change the endpoint URL to your own backend URL.
 - Use 10.0.2.2:8000 to access the localhost.
-- Generate the .apk file from the Android Studios
 
 ## License
 
