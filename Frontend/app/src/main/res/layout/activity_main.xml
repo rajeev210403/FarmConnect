@@ -35,8 +35,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-
-
                     <TextView
                         android:id="@+id/titleTextView"
                         android:layout_width="0dp"
@@ -85,17 +83,12 @@
                         android:layout_weight="1"
                         android:src="@drawable/location" />
 
-                    <EditText
-                        android:id="@+id/textview7"
+                    <Spinner
+                        android:id="@+id/locationSpinner"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-
-                        android:background="#ECEBE6"
-                        android:hint="Choose Location "
-                        android:textColor="#000000"
-                        android:textSize="20dp"
-                        android:textStyle="italic" />
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:minHeight="48dp" />
 
                 </LinearLayout>
 

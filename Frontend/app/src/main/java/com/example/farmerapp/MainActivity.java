@@ -16,6 +16,11 @@ import com.example.farmerapp.Domain.CategoryDomain;
 import com.example.farmerapp.Domain.FarmerDomain;
 import com.example.farmerapp.Domain.TopProductDomain;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,13 +32,53 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewFarmerList;
 
+    private static final String PREFS_NAME = "LocationPrefs";
+    private static final String SELECTED_LOCATION_KEY = "SelectedLocation";
 
+    private SharedPreferences sharedPreferences;
+    private Spinner locationSpinner;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
+        locationSpinner = findViewById(R.id.locationSpinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.states_array, // Define an array of state names in res/values/strings.xml
+                android.R.layout.simple_spinner_item
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        locationSpinner.setAdapter(adapter);
+
+        // Set a default prompt for the spinner
+        locationSpinner.setPrompt("Choose Location");
+
+        locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedLocation = parent.getItemAtPosition(position).toString();
+                saveSelectedLocation(selectedLocation);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        // Set the spinner selection to the saved location
+        String savedLocation = sharedPreferences.getString(SELECTED_LOCATION_KEY, "");
+        if (!savedLocation.isEmpty()) {
+            int spinnerPosition = adapter.getPosition(savedLocation);
+            if (spinnerPosition >= 0) {
+                locationSpinner.setSelection(spinnerPosition);
+            }
+        }
 
         cartb = findViewById(R.id.carticon1);
 
@@ -149,5 +194,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void saveSelectedLocation(String location) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SELECTED_LOCATION_KEY, location);
+        editor.apply();
+    }
 
 }
