@@ -1,3 +1,3 @@
 from db.base_class import Base
-from db.models.products import Job
+from db.models.products import Products
 from db.models.users import User

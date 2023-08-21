@@ -1,4 +1,4 @@
-from db.models.products import Job
+from db.models.products import Products as Job
 from schemas.products import JobCreate
 from sqlalchemy.orm import Session
 

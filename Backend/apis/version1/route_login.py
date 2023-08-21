@@ -32,7 +32,6 @@ def authenticate_user(username: str, password: str, db: Session = Depends(get_db
         return False
     return user
 
-
 @router.post("/token", response_model=Token)
 def login_for_access_token(
     response: Response,

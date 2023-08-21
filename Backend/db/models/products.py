@@ -8,7 +8,7 @@ from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
 
-class Job(Base):
+class Products(Base):
     id = Column(Integer, primary_key=True, index=True)
     product_name = Column(String, nullable=False)
     contact = Column(String, nullable=False)
@@ -19,3 +19,4 @@ class Job(Base):
     is_active = Column(Boolean(), default=True)
     owner_id = Column(Integer, ForeignKey("user.id"))
     owner = relationship("User", back_populates="products")
+    in_cart = relationship("User", back_populates="cart")
