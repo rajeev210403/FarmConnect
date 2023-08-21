@@ -13,6 +13,7 @@ class ShowUser(BaseModel):
     username: str
     email: EmailStr
     is_active: bool
+    cart: list = []
 
     class Config:  # to convert non dict obj to json
         orm_mode = True

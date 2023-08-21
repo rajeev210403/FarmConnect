@@ -17,11 +17,18 @@ from fastapi import status
 from fastapi.templating import Jinja2Templates
 from schemas.products import JobCreate
 from schemas.products import ShowJob
+from schemas.users import ShowUser
 from sqlalchemy.orm import Session
+
 
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
+
+@router.post("/profile/", response_model=ShowUser)
+def profile(
+    current_user: User = Depends(get_current_user_from_token),):
+    return current_user
 
 
 @router.post("/create-product/", response_model=ShowJob)

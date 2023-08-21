@@ -13,4 +13,5 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean(), default=True)
     is_superuser = Column(Boolean(), default=False)
-    products = relationship("Job", back_populates="owner")
+    products = relationship("Products", back_populates="owner")
+    cart = relationship("Products", back_populates="in_cart")
