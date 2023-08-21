@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmerapp.Adaptor.CategoryAdaptor;
+import com.example.farmerapp.Adaptor.FarmerAdaptor;
 import com.example.farmerapp.Adaptor.TopProductAdaptor;
 import com.example.farmerapp.Domain.CategoryDomain;
+import com.example.farmerapp.Domain.FarmerDomain;
 import com.example.farmerapp.Domain.TopProductDomain;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewCategoryList;
     private RecyclerView recyclerViewTopProList;
+
+    private RecyclerView recyclerViewFarmerList;
 
 
 
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerViewCategory();
         recyclerViewTopPro();
+        recyclerViewFarmer();
         bot1 =  findViewById(R.id.imageview3);
         buybtn =findViewById(R.id.imageview2);
         sellbtn =findViewById(R.id.imageview4);
@@ -81,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         cartb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, sscart.class);
+                Intent intent = new Intent(MainActivity.this, cart.class);
                 startActivity(intent);
             }
         });
@@ -123,6 +128,24 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new TopProductAdaptor(toppro);
         recyclerViewTopProList.setAdapter(adapter);
+
+    }
+
+    private void recyclerViewFarmer(){
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewFarmerList = findViewById(R.id.farm_RV);
+        recyclerViewFarmerList.setLayoutManager(linearLayoutManager);
+
+        ArrayList<FarmerDomain> farmer = new ArrayList<>();
+        farmer.add(new FarmerDomain("farmer1","tomato"));
+
+        farmer.add(new FarmerDomain("Fruits","fruiticon"));
+        farmer.add(new FarmerDomain("Dairy","dairyicon"));
+        farmer.add(new FarmerDomain("Poultry","poultryicon"));
+        farmer.add(new FarmerDomain("Seeds","seedicon"));
+
+        adapter = new FarmerAdaptor(farmer);
+        recyclerViewFarmerList.setAdapter(adapter);
 
     }
 
