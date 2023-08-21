@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         cartb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, cart.class);
+                Intent intent = new Intent(MainActivity.this, sscart.class);
                 startActivity(intent);
             }
         });
