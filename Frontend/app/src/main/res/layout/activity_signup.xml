@@ -85,7 +85,16 @@
                 android:backgroundTint="#90EE90"
                 android:id="@+id/signupbutton"
                 android:textSize="18dp"/>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/atv"
+                android:text="demo"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                android:textColor="#9E9E9E"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
