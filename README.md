@@ -20,11 +20,16 @@ Revolutionizing agriculture support through unprecedented abstraction, user-frie
   uvicorn main:app
 ```
 
-### Deploying the API endpoints (frontend)
+### Generating and Testing APK (frontend)
 - Frontend is developed on Android studios
 - Change the endpoint URL to your own backend URL.
 - Use 10.0.2.2:8000 to access the localhost.
 - Generate the .apk file from the Android Studios
+
+
+## 🌾API Documentation
+- The project provides API endpoints for the developers to implement them in their own projects, extensions or apps.
+- API Documentation is simple and is available at http://127.0.0.1:8000/docs
 
 ## License
 
