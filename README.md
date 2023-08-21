@@ -27,7 +27,7 @@ Revolutionizing agriculture support through unprecedented abstraction, user-frie
 - Generate the .apk file from the Android Studios
 
 
-## 🌾API Documentation
+## 🐄API Documentation
 - The project provides API endpoints for the developers to implement them in their own projects, extensions or apps.
 - API Documentation is simple and is available at http://127.0.0.1:8000/docs
 - ![Alt text](image-4.png)
