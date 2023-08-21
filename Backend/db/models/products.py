@@ -11,8 +11,8 @@ from sqlalchemy.orm import relationship
 class Job(Base):
     id = Column(Integer, primary_key=True, index=True)
     product_name = Column(String, nullable=False)
-    company = Column(String, nullable=False)
-    company_url = Column(String)
+    contact = Column(String, nullable=False)
+    contact_url = Column(String)
     location = Column(String, nullable=False)
     description = Column(String, nullable=False)
     date_posted = Column(Date)
