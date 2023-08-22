@@ -18,7 +18,7 @@ psycopg2
 python-dotenv
 
 #for email validation
-pydantic[email]
+pydantic<2.0.0
 
 #hashing
 passlib[bcrypt]
