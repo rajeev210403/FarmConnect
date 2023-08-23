@@ -3,8 +3,7 @@ Connecting to farmers:
 
 Revolutionizing agriculture support through unprecedented abstraction, user-friendly interfaces, and ubiquitous access.
 
-> Problem Statement (AGRI12)
-
+> Problem Statement
 
 Designing innovative Android applications to address societal challenges in the Indian context, particularly aligned with the United Nations' Sustainable Development Goals (SDGs), is a formidable yet rewarding endeavor. With India's vast population, cultural diversity, and multilingual landscape, the potential to create meaningful and impactful solutions is immense
 
