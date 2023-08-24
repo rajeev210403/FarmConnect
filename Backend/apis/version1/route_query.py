@@ -7,6 +7,7 @@ from langchain.schema import HumanMessage, SystemMessage
 from chromadb.config import Settings
 import chromadb
 from typing import List
+import os
 
 from langchain.document_loaders import SeleniumURLLoader
 from langchain.document_loaders import PyPDFLoader
@@ -15,6 +16,7 @@ from langchain.document_loaders import SitemapLoader
 
 router = APIRouter()
 
+api = os.getenv("OPENAI_API_KEY")
 
 @router.get("/query={query}")
 def query(query: str, db: Session = Depends(get_db)):
@@ -23,7 +25,7 @@ def query(query: str, db: Session = Depends(get_db)):
     persist_directory="backend/docs"))  
     collection = client.get_or_create_collection("data")
     res = collection.query(query_texts=[query] ,n_results=2)    
-    chat = ChatOpenAI(openai_api_key="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"
+    chat = ChatOpenAI(openai_api_key=api
                       , model="gpt-3.5-turbo-0613")
     messages = [HumanMessage(content= "context : " + res + " question : " + query)]
     ans = chat(messages).content
