@@ -1,5 +1,5 @@
 # 👨‍🌾FarmConnect
-Connecting to farmers:
+Connecting to farmers: Not just another farming assistant
 
 Revolutionizing agriculture support through unprecedented abstraction, user-friendly interfaces, and ubiquitous access.
 
@@ -10,15 +10,14 @@ Designing innovative Android applications to address societal challenges in the 
 
 ## Features
 
-1. A personalized Chat Bot
-2. Provides best solutions to the farmer's problem algorithm.
-3. Crop Recommendation
-4. Fertilizer Recommendation
-5. Disease Prediction
-6. Weather Forecasting
-7. Multilingual
-![Alt text](image.png)
-
+- Multilingual : The app is multilingual, understanding and responding to all the popular regional languages even in hinglish or regional languages written in roman scripts.
+![Alt text](image-1.png)
+- Semantic Search : Semantic search seeks to improve search accuracy by understanding the searcher's intent and the contextual meaning of terms as they appear in the searchable dataspace, whether on the Web or within a closed system, to generate more relevant results.
+- Vector Embeddings: Vector embeddings are a type of data representation that carries within it semantic information that’s critical for the AI to gain understanding and maintain a long-term memory they can draw upon when executing complex tasks.
+![Alt text](image-2.png)
+- Vector Databases: Vector databases like ChromaDB (opensource) or Pinecone offers optimized storage and querying capabilities for embeddings.
+We made our app adaptable , where new information, govt schemes, techniques etc. can be easily fed to the chatbot in the form of PDF , text , html etc. within minutes.
+![Alt text](fc1.png)
 
 - **Frontend**: Java
 - **Backend**: 
