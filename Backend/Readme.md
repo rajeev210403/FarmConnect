@@ -1,0 +1,1 @@
+1. Setup the variables in .env file
