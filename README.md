@@ -51,6 +51,10 @@ Designing innovative Android applications to address societal challenges in the 
 ```bash
   uvicorn main:app
 ```
+- Already hosted server could be found on 
+```bash
+  https://farmconnectback.onrender.com/docs
+```
 
 ### Generating and Testing APK (frontend)
 - Frontend is developed on Android studios
