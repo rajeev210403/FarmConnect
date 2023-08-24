@@ -23,22 +23,22 @@ from sqlalchemy.orm import Session
 
 
 router = APIRouter()
-templates = Jinja2Templates(directory="templates")
 
+# returns all the info about the logged in user (except hashed password)
 @router.post("/profile/", response_model=ShowUser)
 def profile(
     current_user: User = Depends(get_current_user_from_token),):
     return current_user
 
-
+# creates a new product and returns the product info
 @router.post("/create-product/", response_model=ShowJob)
 def create_product(
-    job: JobCreate,
+    product: JobCreate,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user_from_token),
 ):
-    job = create_new_job(job=job, db=db, owner_id=current_user.id)
-    return job
+    product = create_new_job(job=product, db=db, owner_id=current_user.id)
+    return product
 
 
 @router.get(
