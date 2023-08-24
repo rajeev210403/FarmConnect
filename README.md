@@ -54,6 +54,7 @@ We made our app adaptable , where new information, govt schemes, techniques etc.
 ```bash
   https://farmconnectback.onrender.com/docs
 ```
+- When hosting on server, you can use the Dockerfile provided to containerize the program to avoid any dependency issues.
 
 ### Generating and Testing APK (frontend)
 - Frontend is developed on Android studios
