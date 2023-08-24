@@ -1,6 +1,7 @@
 package com.example.farmerapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String SELECTED_LOCATION_KEY = "SelectedLocation";
 
     private SharedPreferences sharedPreferences;
+    public String Select_location;
     private Spinner locationSpinner;
 
 
@@ -50,19 +52,19 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
-                R.array.states_array, // Define an array of state names in res/values/strings.xml
+                R.array.states_array,
                 android.R.layout.simple_spinner_item
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(adapter);
 
-        // Set a default prompt for the spinner
         locationSpinner.setPrompt("Choose Location");
 
         locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedLocation = parent.getItemAtPosition(position).toString();
+                Select_location=selectedLocation;
                 saveSelectedLocation(selectedLocation);
             }
 
@@ -71,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Set the spinner selection to the saved location
         String savedLocation = sharedPreferences.getString(SELECTED_LOCATION_KEY, "");
         if (!savedLocation.isEmpty()) {
             int spinnerPosition = adapter.getPosition(savedLocation);
@@ -90,13 +91,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        cartb.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, cart.class);
-//                startActivity(intent);
-//            }
-//        });
 
         recyclerViewCategory();
         recyclerViewTopPro();
@@ -118,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, buy.class);
+                intent.putExtra("user_location", Select_location);
                 startActivity(intent);
             }
         });
@@ -182,12 +177,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewFarmerList.setLayoutManager(linearLayoutManager);
 
         ArrayList<FarmerDomain> farmer = new ArrayList<>();
-        farmer.add(new FarmerDomain("farmer1","tomato"));
+        farmer.add(new FarmerDomain(" ","tomato"));
 
-        farmer.add(new FarmerDomain("Fruits","fruiticon"));
-        farmer.add(new FarmerDomain("Dairy","dairyicon"));
-        farmer.add(new FarmerDomain("Poultry","poultryicon"));
-        farmer.add(new FarmerDomain("Seeds","seedicon"));
+        farmer.add(new FarmerDomain(" ","fruiticon"));
+        farmer.add(new FarmerDomain(" ","dairyicon"));
+        farmer.add(new FarmerDomain(" ","poultryicon"));
+        farmer.add(new FarmerDomain(" ","seedicon"));
 
         adapter = new FarmerAdaptor(farmer);
         recyclerViewFarmerList.setAdapter(adapter);
@@ -198,6 +193,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(SELECTED_LOCATION_KEY, location);
         editor.apply();
+    }
+    void checkuserexistence(){
+        SharedPreferences sp = getSharedPreferences("credentials", MODE_PRIVATE);
+        if(sp.contains("username")){
+
+        }
+        else{
+            startActivity(new Intent(getApplicationContext(), login.class));
+        }
     }
 
 }
