@@ -16,8 +16,8 @@ Designing innovative Android applications to address societal challenges in the 
 4. Fertilizer Recommendation
 5. Disease Prediction
 6. Weather Forecasting
-7. AI Voice Assistance
-8. Multilingual
+7. Multilingual
+![Alt text](image.png)
 
 
 - **Frontend**: Java
