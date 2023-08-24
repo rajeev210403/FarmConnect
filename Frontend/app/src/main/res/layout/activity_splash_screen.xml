@@ -21,7 +21,7 @@
         android:textColor="@color/black"
         android:textSize="40dp"
         android:textStyle="bold" />
-    
+
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="400dp"
         android:layout_height="400dp"

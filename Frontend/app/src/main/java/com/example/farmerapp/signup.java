@@ -1,81 +1,104 @@
 package com.example.farmerapp;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class signup extends AppCompatActivity {
-    TextView already;
-    Button btn;
-    EditText nametext , emailtext, passwordtext;
-    Button sgb;
-    TextView tv ;
+
+    private EditText emailEditText, usernameEditText, passwordEditText;
+    private CheckBox farmerCheckBox;
+    private Button signupButton;
+    private TextView alreadyUserTextView;
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference usersReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        nametext=findViewById(R.id.username);
-        emailtext = findViewById(R.id.signupemail);
-        passwordtext = findViewById(R.id.signuppassword);
-        btn = findViewById(R.id.signupbutton);
-        tv=findViewById(R.id.atv);
 
-        already = findViewById(R.id.alreadyuser);
-        sgb = findViewById(R.id.signupbutton);
-        already.setOnClickListener(new View.OnClickListener() {
+        mAuth = FirebaseAuth.getInstance();
+        usersReference = FirebaseDatabase.getInstance().getReference("users");
+
+        emailEditText = findViewById(R.id.signupemail);
+        usernameEditText = findViewById(R.id.username);
+        passwordEditText = findViewById(R.id.signuppassword);
+        farmerCheckBox = findViewById(R.id.farmercheck);
+        signupButton = findViewById(R.id.signupbutton);
+        alreadyUserTextView = findViewById(R.id.alreadyuser);
+        alreadyUserTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(signup.this, login.class);
                 startActivity(intent);
             }
         });
-
-        sgb.setOnClickListener(new View.OnClickListener() {
+        signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(signup.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                processdata(nametext.getText().toString(), emailtext.getText().toString(), passwordtext.getText().toString());
+                signUpUser();
             }
         });
     }
-    public void processdata(String name, String email, String password){
-        Call<responsemodel> call = apiController.getInstance()
-                .getapi()
-                .getregister(name,email,password);
-        call.enqueue(new Callback<responsemodel>() {
-            @Override
-            public void onResponse(Call<responsemodel> call, Response<responsemodel> response) {
-                responsemodel obj = response.body();
-                tv.setText(obj.getMessage());
-                nametext.setText("");
-                emailtext.setText("");
-                passwordtext.setText("");
-            }
 
-            @Override
-            public void onFailure(Call<responsemodel> call, Throwable t) {
+    private void signUpUser() {
+        String email = emailEditText.getText().toString();
+        String username = usernameEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+        boolean isFarmer = farmerCheckBox.isChecked();
 
-                tv.setText("something went wrong");
-                nametext.setText("");
-                emailtext.setText("");
-                passwordtext.setText("");
-            }
-        });
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            String userId = mAuth.getCurrentUser().getUid();
+                            User user = new User(email, username, isFarmer);
+
+                            usersReference.child(userId).setValue(user)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> databaseTask) {
+                                            if (databaseTask.isSuccessful()) {
+                                                Toast.makeText(signup.this, "User registration successful!", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(signup.this, login.class));
+                                                finish();
+                                            } else {
+                                                Exception exception = databaseTask.getException();
+                                                if (exception != null) {
+                                                    Toast.makeText(signup.this, "Database storage failed: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        }
+                                    });
+                        } else {
+                            Exception exception = task.getException();
+                            if (exception != null) {
+                                Toast.makeText(signup.this, "User registration failed: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
     }
+
+
 }
+
