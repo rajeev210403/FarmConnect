@@ -1,5 +1,5 @@
 # 👨‍🌾FarmConnect
-Connecting to farmers:
+Connecting to farmers: Not just another farming assistant
 
 Revolutionizing agriculture support through unprecedented abstraction, user-friendly interfaces, and ubiquitous access.
 
