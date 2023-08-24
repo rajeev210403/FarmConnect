@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.farmerapp.Domain.CategoryDomain;
 import com.example.farmerapp.Domain.TopProductDomain;
 import com.example.farmerapp.R;
 
