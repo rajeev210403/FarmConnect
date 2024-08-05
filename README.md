@@ -1,31 +1,27 @@
-# 👨‍🌾FarmConnect
-Connecting to farmers: Not just another farming assistant
+# 👨‍🌾 FarmConnect: Connecting Farmers with Innovation
 
-Revolutionizing agriculture support through unprecedented abstraction, user-friendly interfaces, and ubiquitous access.
+Welcome to **FarmConnect**, where innovation meets agriculture in the heart of India! Our Android application is not just another farming assistant; it's a revolutionary solution designed to address societal challenges in the Indian context, aligned with the United Nations' Sustainable Development Goals (SDGs). With India's vast population, cultural diversity, and multilingual landscape, our app strives to create meaningful and impactful solutions for farmers.
 
-## Problem Statement
+## 🌱 Problem Statement
 
-Designing innovative Android applications to address societal challenges in the Indian context, particularly aligned with the United Nations' Sustainable Development Goals (SDGs), is a formidable yet rewarding endeavor. With India's vast population, cultural diversity, and multilingual landscape, the potential to create meaningful and impactful solutions is immense
+Designing innovative Android applications to support agriculture in India is both challenging and rewarding. With the country's vast population, diverse cultures, and multilingual environment, creating impactful solutions aligned with the Sustainable Development Goals (SDGs) is crucial.
+
+## ✨ Key Features
+
+- **Multilingual Support**: Our app understands and responds in popular regional languages, including Hinglish and regional languages written in Roman scripts.
+- **Semantic Search**: Enjoy accurate search results by understanding the user's intent and contextual meaning of terms, ensuring relevant outcomes.
+- **Vector Embeddings**: We employ advanced data representation techniques that carry semantic information for a better understanding of user queries.
+- **Adaptability**: Easily update the app with new information, government schemes, techniques, etc., through various formats like PDF, text, or HTML.
 
 
-## Features
-
-- Multilingual : The app is multilingual, understanding and responding to all the popular regional languages even in hinglish or regional languages written in roman scripts.
-![Alt text](image-1.png)
-- Semantic Search : Semantic search seeks to improve search accuracy by understanding the searcher's intent and the contextual meaning of terms as they appear in the searchable dataspace, whether on the Web or within a closed system, to generate more relevant results.
-- Vector Embeddings: Vector embeddings are a type of data representation that carries within it semantic information that’s critical for the AI to gain understanding and maintain a long-term memory they can draw upon when executing complex tasks.
-![Alt text](image-2.png)
-- Vector Databases: Vector databases like ChromaDB (opensource) or Pinecone offers optimized storage and querying capabilities for embeddings.
-We made our app adaptable , where new information, govt schemes, techniques etc. can be easily fed to the chatbot in the form of PDF , text , html etc. within minutes.
-![Alt text](fc1.png)
+## 🚀 Technologies Used
 
 - **Frontend**: Java
-- **Backend**: 
+- **Backend**: FastAPI (Python)
 - **IDE**: VS Code, Android Studio
 - **Design**: Figma, Canva
-- **API Testing & Documentation**: 
 - **Version Control**: Git and GitHub
-
+- 
 #### GitHub Repository Structure
 
 
@@ -56,11 +52,11 @@ We made our app adaptable , where new information, govt schemes, techniques etc.
 ```
 - When hosting on server, you can use the Dockerfile provided to containerize the program to avoid any dependency issues.
 
-### Generating and Testing APK (frontend)
-- Frontend is developed on Android studios
-- Change the endpoint URL to your own backend URL.
-- Use 10.0.2.2:8000 to access the localhost.
-- Generate the .apk file from the Android Studios
+### Generating and Testing APK (Frontend)
+- Developed using Android Studio
+- Update the endpoint URL to your backend URL.
+- Use `10.0.2.2:8000` to access localhost.
+- Generate the .apk file from Android Studio.
 
 
 ## 🐄API Documentation
